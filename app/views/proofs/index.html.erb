@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Proofs</h1>
+
+<div id="proofs">
+  <% @proofs.each do |proof| %>
+    <%= render proof %>
+    <p>
+      <%= link_to "Show this proof", proof %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New proof", new_proof_path %>

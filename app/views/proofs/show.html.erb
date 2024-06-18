@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @proof %>
+
+<div>
+  <%= link_to "Edit this proof", edit_proof_path(@proof) %> |
+  <%= link_to "Back to proofs", proofs_path %>
+
+  <%= button_to "Destroy this proof", @proof, method: :delete %>
+</div>
