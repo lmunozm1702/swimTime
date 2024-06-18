@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2024-06-18 17:08:49
+  end: 2024-06-18 17:08:49
+  pool_type: 1
+  proofs: one
+  genre: 1
+  proof_type: 1
+
+two:
+  start: 2024-06-18 17:08:49
+  end: 2024-06-18 17:08:49
+  pool_type: 1
+  proofs: two
+  genre: 1
+  proof_type: 1
