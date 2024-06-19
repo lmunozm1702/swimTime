@@ -27,6 +27,9 @@ export default class extends Controller {
       const milliseconds = Math.floor((elapsedTime % 1000) / 1);
       document.getElementById('stopwatch').innerText = `${zeroPad(hours, 2)}:${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}`;
     }
+    //disable this button
+    document.getElementById('btn-start').disabled = true;
+    document.getElementById('btn-stop').disabled = false;
   }
 
   end(event) {
@@ -35,7 +38,7 @@ export default class extends Controller {
     self.stopwatchInterval = null;
   }
 
-  setflag(event) {
+  setcheck(event) {
     event.preventDefault()
 
     const zeroPad = (num, places) => String(num).padStart(places, '0');

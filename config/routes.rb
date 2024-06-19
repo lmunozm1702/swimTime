@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :proofs
 
   #races routes
   get "races/time_registration", to: "races#time_registration"
