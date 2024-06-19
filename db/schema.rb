@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_18_210849) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_19_225244) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_18_210849) do
     t.integer "proof_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "style"
+    t.integer "distance"
     t.index ["proofs_id"], name: "index_races_on_proofs_id"
   end
 
