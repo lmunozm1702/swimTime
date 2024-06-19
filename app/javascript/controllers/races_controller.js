@@ -14,6 +14,7 @@ export default class extends Controller {
     if (!this.stopwatchInterval) {
       self.startTime = new Date().getTime();
       self.stopwatchInterval = setInterval(updateStopwatch, 1);
+
     }
 
     const zeroPad = (num, places) => String(num).padStart(places, '0');
@@ -30,12 +31,15 @@ export default class extends Controller {
     //disable this button
     document.getElementById('btn-start').disabled = true;
     document.getElementById('btn-stop').disabled = false;
+    document.getElementById('btn-check').disabled = false;
   }
 
   end(event) {
     event.preventDefault()
     clearInterval(self.stopwatchInterval);
     self.stopwatchInterval = null;
+    document.getElementById('btn-check').disabled = true;
+    document.getElementById('btn-stop').disabled = true;
   }
 
   setcheck(event) {

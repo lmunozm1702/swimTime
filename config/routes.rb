@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-
   #races routes
   get "races/time_registration", to: "races#time_registration"
   get "races/save_time", to: "races#save_time"
+  get "races/start", to: "races#start"
+  get "races/finish", to: "races#finish"
+  get "races/checkpoint", to: "races#checkpoint"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
