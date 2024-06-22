@@ -85,7 +85,6 @@ export default class extends Controller {
       localStorage.setItem('startCheckpoint', currentTime);
     } else {
       localStorage.setItem('endCheckpoint', currentTime);
-      console.log(localStorage);
       document.getElementById('flagwatch').innerText = `${zeroPad(hours, 2)}:${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}`;
       // call controller with all 4 times from local storage
       var race_id = document.getElementById('race_id').value;
@@ -103,6 +102,5 @@ export default class extends Controller {
       localStorage.setItem('armEnd', null);
       localStorage.setItem('endCheckpoint', null);
     }
-    console.log(localStorage);
   }
 }

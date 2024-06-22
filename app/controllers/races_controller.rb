@@ -27,7 +27,6 @@ class RacesController < ApplicationController
   end
 
   def checkpoint
-    pp '+++++++++++++++++++++++++++++++++++++++++++++'
     pp helpers.timestamp_to_time(params[:start_checkpoint]).to_datetime.in_time_zone('Chile/Continental')
   end
 
