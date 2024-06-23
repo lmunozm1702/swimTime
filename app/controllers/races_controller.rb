@@ -28,6 +28,27 @@ class RacesController < ApplicationController
 
   def checkpoint
     pp helpers.timestamp_to_time(params[:start_checkpoint]).to_datetime.in_time_zone('Chile/Continental')
+    @race = Race.find(params[:race_id])
+    @race.checkpoints.create(
+      start: helpers.timestamp_to_time(params[:start_checkpoint]).to_datetime.in_time_zone('Chile/Continental'),
+      end: helpers.timestamp_to_time(params[:end_checkpoint]).to_datetime.in_time_zone('Chile/Continental'),
+      arm_start:
+        (
+          if params[:arm_start] == 'null'
+            nil
+          else
+            helpers.timestamp_to_time(params[:arm_start]).to_datetime.in_time_zone('Chile/Continental')
+          end
+        ),
+      arm_end:
+        (
+          if params[:arm_end] == 'null'
+            nil
+          else
+            helpers.timestamp_to_time(params[:arm_end]).to_datetime.in_time_zone('Chile/Continental')
+          end
+        ),
+    )
   end
 
   private
