@@ -1,5 +1,5 @@
 <turbo-frame id="times-list">
-  <%= render partial: 'races/checkpoints_list', locals: { checkpoints: @race } %>
+  <%= render partial: 'races/checkpoints_list', locals: { race: @race } %>
 </turbo-frame>
 <%= form_with url: races_save_time_path, data: { controller: 'races' } do |f| %>
   <%= f.hidden_field :race_id, value: @race.id %>

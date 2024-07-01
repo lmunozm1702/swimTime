@@ -5,8 +5,40 @@
         <th class="text-center">Distance</th>
         <th class="text-center">Time</th>
         <th class="text-center">Arm Freq.</th>
-        <th class="text-center">Total Time</th>
+        <th class="text-center">Elapsed Time</th>
       </tr>
     </thead>
+    <tbody>
+      <% 
+        count = race.checkpoints.count 
+        total_time = nil
+        total_elapsed = 0
+      %>
+      <% race.checkpoints.order(id: :desc).each do |checkpoint| %>
+        <tr>
+          <%            
+            if total_time.nil?
+              total_time = race.checkpoints.sum(:elapsed_time)                          
+            end          
+          %>
+          <td class="text-center"><%= race.pool_type.humanize.to_i * count %></td>
+          <% if checkpoint.start.nil? || checkpoint.end.nil? %>
+            <td class="text-center">0</td>
+          <% else %>
+            <td class="text-center"><%= Time.at(checkpoint.elapsed_time).strftime("%M:%S.%L") %></td>
+          <% end %>
+          <% if checkpoint.arm_start.nil? || checkpoint.arm_end.nil? %>
+            <td class="text-center">0</td>
+          <% else %>
+            <td class="text-center"><%= Time.at(checkpoint.arm_end - checkpoint.arm_start).strftime("%M:%S.%L") %></td>
+          <% end %>
+          <td class="text-center"><%= Time.at(total_time - total_elapsed).strftime("%M:%S.%L") %></td>
+        </tr>
+        <% 
+           count -= 1         
+           total_elapsed += checkpoint.elapsed_time               
+        %>
+      <% end %>
+    </tbody>
   </table>
 </div>

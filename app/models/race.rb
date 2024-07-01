@@ -1,7 +1,7 @@
 class Race < ApplicationRecord
   has_many :checkpoints
 
-  enum pool_type: { meters_25: 0, meters_50: 1, open_water: 2 }, _prefix: true
+  enum pool_type: { _25: 0, _50: 1 }, _prefix: true
   enum genre: { man: 1, woman: 2, mixed: 3 }
   enum proof_type: { individual: 0, relay: 1 }
   enum style: { freestyle: 0, backstroke: 1, breaststroke: 2, butterfly: 3, medley: 4 }
@@ -17,9 +17,6 @@ class Race < ApplicationRecord
          meters_4x200: 8,
          meters_3000: 9,
          meters_5000: 10,
-         meters_7500: 11,
-         meters_10000: 12,
-         meters_4x1250: 13,
        },
        _prefix: true
 end

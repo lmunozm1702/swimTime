@@ -32,6 +32,7 @@ export default class extends Controller {
     document.getElementById('btn-start').disabled = true;
     document.getElementById('btn-stop').disabled = false;
     document.getElementById('btn-check').disabled = false;
+    document.getElementById('btn-arm').disabled = false;
 
     var race_id = document.getElementById('race_id').value;
 
@@ -83,6 +84,7 @@ export default class extends Controller {
     const milliseconds = Math.floor((elapsedTime % 1000) / 1);
     if (localStorage.getItem('startCheckpoint') == 'null') {
       localStorage.setItem('startCheckpoint', currentTime);
+      document.getElementById('btn-arm').disabled = true;
     } else {
       localStorage.setItem('endCheckpoint', currentTime);
       document.getElementById('flagwatch').innerText = `${zeroPad(hours, 2)}:${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}`;
@@ -97,10 +99,25 @@ export default class extends Controller {
         .then(response => response.text())
         .then(html => { Turbo.renderStreamMessage(html) })
 
+      document.getElementById('btn-arm').disabled = false;
+
       localStorage.setItem('startCheckpoint', currentTime);
       localStorage.setItem('armStart', null);
       localStorage.setItem('armEnd', null);
       localStorage.setItem('endCheckpoint', null);
+    }
+  }
+
+  setarm(event) {
+    event.preventDefault()
+    const zeroPad = (num, places) => String(num).padStart(places, '0');
+    var currentTime = new Date().getTime();
+
+    if (localStorage.getItem('armStart') == 'null') {
+      localStorage.setItem('armStart', currentTime);
+    } else {
+      localStorage.setItem('armEnd', currentTime);
+      document.getElementById('btn-arm').disabled = true;
     }
   }
 }
