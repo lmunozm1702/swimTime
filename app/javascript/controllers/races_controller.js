@@ -61,7 +61,7 @@ export default class extends Controller {
 
     var race_id = document.getElementById('race_id').value;
 
-    this.url = `/races/finish?race_id=${race_id}&end_time=${self.endTime}`
+    this.url = `/races/finish?race_id=${race_id}&end_time=${self.endTime}&start_checkpoint=${localStorage.getItem('startCheckpoint')}&arm_start=${localStorage.getItem('armStart')}&arm_end=${localStorage.getItem('armEnd')}&end_checkpoint=${localStorage.getItem('endCheckpoint')}`
     fetch(this.url, {
       headers: {
         Accept: "text/vnd.turbo-stream.html, text/html, application/xhtml+xml",

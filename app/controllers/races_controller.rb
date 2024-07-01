@@ -21,14 +21,21 @@ class RacesController < ApplicationController
 
   def finish
     @race = Race.includes(:checkpoints).find(params[:race_id])
+    add_checkpoint(@race, params)
     @race.update(
       end_datetime: helpers.timestamp_to_time(params[:end_time]).to_datetime.in_time_zone('Chile/Continental'),
     )
+    @race = Race.includes(:checkpoints).find(params[:race_id])
   end
 
   def checkpoint
-    pp helpers.timestamp_to_time(params[:start_checkpoint]).to_datetime.in_time_zone('Chile/Continental')
-    @race = Race.find(params[:race_id])
+    add_checkpoint(@race, params)
+    @race = Race.includes(:checkpoints).find(params[:race_id])
+  end
+
+  private
+
+  def add_checkpoint(race, params)
     @race.checkpoints.create(
       start: helpers.timestamp_to_time(params[:start_checkpoint]).to_datetime.in_time_zone('Chile/Continental'),
       end: helpers.timestamp_to_time(params[:end_checkpoint]).to_datetime.in_time_zone('Chile/Continental'),
@@ -52,10 +59,7 @@ class RacesController < ApplicationController
         helpers.timestamp_to_time(params[:end_checkpoint]).to_datetime.in_time_zone('Chile/Continental') -
           helpers.timestamp_to_time(params[:start_checkpoint]).to_datetime.in_time_zone('Chile/Continental'),
     )
-    @race = Race.includes(:checkpoints).find(params[:race_id])
   end
-
-  private
 
   def race_params
     params.permit(:start, :end, :pool_type, :proof_type, :style, :distance)
