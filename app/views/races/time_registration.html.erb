@@ -1,22 +1,31 @@
-<turbo-frame id="times-list">
-  <%= render partial: 'races/checkpoints_list', locals: { race: @race } %>
-</turbo-frame>
-<%= form_with url: races_save_time_path, data: { controller: 'races' } do |f| %>
-  <%= f.hidden_field :race_id, value: @race.id %>
-  <div class="d-flex flex-column">
-    <div id="flagwatch" class="text-center">00:00:00.000</div>
-    <div id="stopwatch" class="text-center">00:00:00.000</div>
-    <div class="d-flex gap-3">
-      <%= f.submit("Start", data: { action: 'click->races#start' , }, class: 'btn btn-success flex-fill' ,
-        id: 'btn-start' ) %>
-      <%= f.submit("End", data: { action: 'click->races#end' , }, class: 'btn btn-danger flex-fill' , disabled:
-            true, id: 'btn-stop' ) %>
-    </div>
-    <div class="d-flex gap-3 mt-2">
-      <%= f.submit("Check", data: { action: 'click->races#setcheck' , }, class: 'btn btn-secondary flex-fill' ,
-          disabled: true, id: 'btn-check' ) %>
-      <%= f.submit("Arm", data: { action: 'click->races#setarm' , }, class: 'btn btn-secondary flex-fill' ,
-          disabled: true, id: 'btn-arm' ) %>
-    </div>
+<div class="d-flex flex-column gap-3">
+  <div>
+    <turbo-frame id="stopwatch-div">
+      <div id="stopwatch" class="text-center">00:00:00.000</div>
+    </turbo-frame>
   </div>
-<% end %>
+  <div>
+    <%= form_with url: races_save_time_path, data: { controller: 'races' } do |f| %>
+      <%= f.hidden_field :race_id, value: @race.id %>
+      <div class="d-flex flex-column">
+        <div class="d-flex gap-3">
+          <%= f.submit("Start", data: { action: 'click->races#start' , }, class: 'btn btn-success flex-fill' ,
+        id: 'btn-start' ) %>
+          <%= f.submit("End", data: { action: 'click->races#end' , }, class: 'btn btn-danger flex-fill' , disabled:
+            true, id: 'btn-stop' ) %>
+        </div>
+        <div class="d-flex gap-3 mt-2">
+          <%= f.submit("Check", data: { action: 'click->races#setcheck' , }, class: 'btn btn-secondary flex-fill' ,
+          disabled: true, id: 'btn-check' ) %>
+          <%= f.submit("Arm", data: { action: 'click->races#setarm' , }, class: 'btn btn-secondary flex-fill' ,
+          disabled: true, id: 'btn-arm' ) %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <turbo-frame id="times-list">
+      <%= render partial: 'races/checkpoints_list', locals: { race: @race } %>
+    </turbo-frame>
+  </div>
+</div>

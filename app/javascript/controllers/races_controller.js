@@ -54,6 +54,7 @@ export default class extends Controller {
   end(event) {
     event.preventDefault()
     self.endTime = new Date().getTime();
+    localStorage.setItem('endCheckpoint', self.endTime);
     clearInterval(self.stopwatchInterval);
     self.stopwatchInterval = null;
     document.getElementById('btn-check').disabled = true;
@@ -87,7 +88,7 @@ export default class extends Controller {
       document.getElementById('btn-arm').disabled = true;
     } else {
       localStorage.setItem('endCheckpoint', currentTime);
-      document.getElementById('flagwatch').innerText = `${zeroPad(hours, 2)}:${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}`;
+      // document.getElementById('flagwatch').innerText = `${zeroPad(hours, 2)}:${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}`;
       // call controller with all 4 times from local storage
       var race_id = document.getElementById('race_id').value;
       this.url = `/races/checkpoint?race_id=${race_id}&start_checkpoint=${localStorage.getItem('startCheckpoint')}&arm_start=${localStorage.getItem('armStart')}&arm_end=${localStorage.getItem('armEnd')}&end_checkpoint=${localStorage.getItem('endCheckpoint')}`

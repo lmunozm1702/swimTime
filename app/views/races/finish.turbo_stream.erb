@@ -1,4 +1,9 @@
- <%= turbo_stream.replace "times-list" do %>
+ <%= turbo_stream.replace "stopwatch-div" do %>
+  <turbo-frame id="stopwatch-div">
+    <div id="stopwatch" class="text-center">AA:BB:CC.DDD</div>
+  </turbo-frame>
+<% end %>
+<%= turbo_stream.replace "times-list" do %>
   <turbo-frame id="times-list">
     <%= render partial: 'races/checkpoints_list', locals: { race: @race } %>
   </turbo-frame>

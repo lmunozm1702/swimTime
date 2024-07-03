@@ -25,18 +25,23 @@ class RacesController < ApplicationController
     @race.update(
       end_datetime: helpers.timestamp_to_time(params[:end_time]).to_datetime.in_time_zone('Chile/Continental'),
     )
-    @race = Race.includes(:checkpoints).find(params[:race_id])
   end
 
   def checkpoint
+    @race = Race.includes(:checkpoints).find(params[:race_id])
     add_checkpoint(@race, params)
+    @race = Race.includes(:checkpoints).find(params[:race_id])
+  end
+
+  def show
+    pp params
     @race = Race.includes(:checkpoints).find(params[:race_id])
   end
 
   private
 
   def add_checkpoint(race, params)
-    @race.checkpoints.create(
+    race.checkpoints.create(
       start: helpers.timestamp_to_time(params[:start_checkpoint]).to_datetime.in_time_zone('Chile/Continental'),
       end: helpers.timestamp_to_time(params[:end_checkpoint]).to_datetime.in_time_zone('Chile/Continental'),
       arm_start:
