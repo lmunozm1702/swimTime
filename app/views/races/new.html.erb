@@ -1,3 +1,4 @@
+<%= render partial: 'shared/view_title', locals: { view_title: 'New Race' } %>
 <%= form_with url: races_create_path, method: :post do |f| %>
   <div class="mb-3">
     <%= f.label :pool_type, class: "form-label" %>
