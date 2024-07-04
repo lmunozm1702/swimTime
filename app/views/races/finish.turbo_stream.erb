@@ -8,3 +8,12 @@
     <%= render partial: 'races/checkpoints_list', locals: { race: @race } %>
   </turbo-frame>
 <% end %>
+<%= turbo_stream.replace "stopwatch-form" do %>
+  <turbo-frame id="stopwatch-form">
+    <div class="d-flex gap-2">
+      <%= link_to 'New Race', races_new_path, class: 'btn btn-primary flex-fill' %>
+      <%= link_to 'Race Details', races_show_path(race_id: @race.id), class: 'btn btn-secondary flex-fill' %>
+    </div>
+  </div>
+</turbo-frame>
+<% end %>
