@@ -1,6 +1,6 @@
  <%= turbo_stream.replace "stopwatch-div" do %>
   <turbo-frame id="stopwatch-div">
-    <div id="stopwatch" class="text-center">AA:BB:CC.DDD</div>
+    <div id="stopwatch" class="text-center"><%= Time.at(@race.checkpoints.sum(:elapsed_time)).strftime("%M:%S.%L") %></div>
   </turbo-frame>
 <% end %>
 <%= turbo_stream.replace "times-list" do %>
