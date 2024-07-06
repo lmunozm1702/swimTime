@@ -5,7 +5,7 @@
         <th class="text-center">Distance</th>
         <th class="text-center">Time</th>
         <th class="text-center">Strokes/min</sTRO></th>
-      <th class="text-center">Elapsed Time</th>
+      <th class="text-center"> Acummulated</th>
     </tr>
   </thead>
   <tbody>
@@ -30,8 +30,8 @@
         <% if checkpoint.arm_start.nil? || checkpoint.arm_end.nil? %>
           <td class="text-center">0</td>
         <% else %>
-          <td class="text-center"><%#= Time.at(checkpoint.arm_end - checkpoint.arm_start).strftime("%M:%S.%L") %>
-            <%= (60 / (Time.at(checkpoint.arm_end - checkpoint.arm_start).seconds_since_midnight.round(3) - 75600).round(3)).round(3) %></td>
+          <td class="text-center">
+            <%= (60 / strokes_by_minute(checkpoint)).round(3) %></td>
         <% end %>
         <td class="text-center"><%= Time.at(total_time - total_elapsed).strftime("%M:%S.%L") %></td>
       </tr>

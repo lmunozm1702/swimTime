@@ -6,4 +6,12 @@ module RacesHelper
     milliseconds = (timestamp.to_i % 1000) / 1
     return "#{hours}:#{minutes}:#{seconds}.#{milliseconds}".to_datetime
   end
+
+  def strokes_by_minute(checkpoint)
+    (Time.at(checkpoint.arm_end - checkpoint.arm_start).seconds_since_midnight.round(3) - 75_600).round(3)
+  end
+
+  def stroke_time(checkpoint)
+    Time.at(checkpoint.arm_end - checkpoint.arm_start).strftime('%M:%S.%L')
+  end
 end
