@@ -1,0 +1,3 @@
+<%= render partial: 'shared/view_title', locals: { view_title: 'Race Details' } %>
+<div id="stopwatch" class="text-center fs-1 clock-text"><%= Time.at(@race.checkpoints.sum(:elapsed_time)).strftime("%M:%S.%L") %></div>
+<%= render partial: 'races/checkpoints_list', locals: { race: @race } %>

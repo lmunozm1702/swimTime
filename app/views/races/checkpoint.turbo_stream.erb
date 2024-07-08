@@ -1,0 +1,5 @@
+ <%= turbo_stream.replace "times-list" do %>
+  <turbo-frame id="times-list">
+    <%= render partial: 'races/checkpoints_list', locals: { race: @race } %>
+  </turbo-frame>
+<% end %>

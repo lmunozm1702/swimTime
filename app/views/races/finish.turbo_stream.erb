@@ -1,0 +1,16 @@
+ <%= turbo_stream.replace "stopwatch-div" do %>
+  <turbo-frame id="stopwatch-div">
+    <div id="stopwatch" class="text-center fs-1 clock-text"><%= Time.at(@race.checkpoints.sum(:elapsed_time)).strftime("%M:%S.%L") %></div>
+  </turbo-frame>
+<% end %>
+<%= turbo_stream.replace "times-list" do %>
+  <turbo-frame id="times-list">
+    <%= render partial: 'races/checkpoints_list', locals: { race: @race } %>
+  </turbo-frame>
+<% end %>
+<%= turbo_stream.replace "stopwatch-form" do %>
+  <div class="d-flex gap-2">
+    <%= link_to 'New Race', races_new_path, class: 'btn btn-primary flex-fill' %>
+    <%= link_to 'Race Details', races_show_path(race_id: @race.id), class: 'btn btn-secondary flex-fill' %>
+  </div>
+<% end %>

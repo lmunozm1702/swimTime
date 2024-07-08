@@ -1,0 +1,28 @@
+<%= render partial: 'shared/view_title', locals: { view_title: 'New Race' } %>
+<%= form_with url: races_create_path, method: :post do |f| %>
+  <div class="mb-3">
+    <%= f.label :pool_type, class: "form-label" %>
+    <%= f.select :pool_type, options_for_select(
+      Race.pool_types.keys.map { |pool_type| [pool_type.humanize, pool_type] }
+    ), { prompt: 'Select pool type...'}, {class: "form-select"} %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :proof_type, class: "form-label" %>
+    <%= f.select :proof_type, options_for_select(
+      Race.proof_types.keys.map { |proof_type| [proof_type.humanize, proof_type] }
+    ), { prompt: 'Select proof type...'}, {class: "form-select"} %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :style, class: "form-label" %>
+    <%= f.select :style, options_for_select(
+      Race.styles.keys.map { |style| [style.humanize, style] }
+    ), { prompt: 'Select style...'}, {class: "form-select"} %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :distance, class: "form-label" %>
+    <%= f.select :distance, options_for_select(
+      Race.distances.keys.map { |distance| [distance.humanize, distance] }
+    ), { prompt: 'Select distance...'}, {class: "form-select"} %>
+  </div>
+  <%= f.submit "Create", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  race: one
+  start: 2024-06-22 19:09:30
+  end: 2024-06-22 19:09:30
+  arm_start: 2024-06-22 19:09:30
+  arm_end: 2024-06-22 19:09:30
+
+two:
+  race: two
+  start: 2024-06-22 19:09:30
+  end: 2024-06-22 19:09:30
+  arm_start: 2024-06-22 19:09:30
+  arm_end: 2024-06-22 19:09:30
