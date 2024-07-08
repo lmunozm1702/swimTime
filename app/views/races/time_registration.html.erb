@@ -1,5 +1,5 @@
 <%= render partial: 'shared/view_title', locals: { view_title: 'Time Registration' } %>
-<div class="d-flex flex-column gap-3">
+<div class="d-flex flex-column gap-2">
   <div>
     <turbo-frame id="stopwatch-div">
       <div id="stopwatch" class="text-center fs-1 clock-text">00:00:00.000</div>
@@ -9,18 +9,24 @@
     <turbo-frame id="stopwatch-form">
       <%= form_with url: races_save_time_path, data: { controller: 'races' } do |f| %>
         <%= f.hidden_field :race_id, value: @race.id %>
-        <div class="d-flex flex-column">
-          <div class="d-flex gap-3">
+        <div class="row">
+          <div class="col-6 d-flex">
             <%= f.submit("Start", data: { action: 'click->races#start' , }, class: 'btn btn-success flex-fill' ,
-        id: 'btn-start' ) %>
-            <%= f.submit("End", data: { action: 'click->races#end' , }, class: 'btn btn-danger flex-fill' , disabled:
-            true, id: 'btn-stop' ) %>
+                  id: 'btn-start' ) %>
           </div>
-          <div class="d-flex gap-3 mt-2">
+          <div class="col-6 d-flex">
+            <%= f.submit("End", data: { action: 'click->races#end' , }, class: 'btn btn-danger flex-fill' , disabled:
+                  true, id: 'btn-stop' ) %>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6 d-flex">
             <%= f.submit("Check", data: { action: 'click->races#setcheck' , }, class: 'btn btn-secondary flex-fill' ,
-          disabled: true, id: 'btn-check' ) %>
+                    disabled: true, id: 'btn-check' ) %>
+          </div>
+          <div class="col-6 d-flex">
             <%= f.submit("Stroke", data: { action: 'click->races#setarm' , }, class: 'btn btn-secondary flex-fill' ,
-          disabled: true, id: 'btn-arm' ) %>
+                    disabled: true, id: 'btn-arm' ) %>
           </div>
         </div>
       <% end %>
