@@ -1,4 +1,8 @@
 class RacesController < ApplicationController
+  def index
+    @races = Race.all.order(created_at: :desc).includes(:checkpoints)
+  end
+
   def new
   end
 
