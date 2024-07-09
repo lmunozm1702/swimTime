@@ -20,6 +20,11 @@
         <td class="text-center"><%= race.style.humanize.titlecase %></td>
         <td class="text-center"><%= race.distance.split('_').reverse.join(' ').titlecase %></td>
         <td class="text-center"><%= Time.at(race.checkpoints.sum(:elapsed_time)).strftime("%M:%S.%L") %></td>
+        <td class="text-center text-primary">
+          <%= link_to races_show_path(race_id: race.id) do %>
+            <i class="bi bi-graph-up-arrow"></i>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
