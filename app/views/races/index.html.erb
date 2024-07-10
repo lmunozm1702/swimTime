@@ -3,10 +3,8 @@
   <thead>
     <tr>
       <th class="text-center">Date</th>
-      <th class="text-center">Pool Type</th>
-      <th class="text-center">Proof</th>
-      <th class="text-center">Style</th>
-      <th class="text-center">Distance</th>
+      <th class="text-center">Swimmer</th>
+      <th class="text-center">Event</th>
       <th class="text-center">Elapsed Time</th>
       <th class="text-center"></th>
     </tr>
@@ -15,10 +13,8 @@
     <% @races.each do |race| %>
       <tr>
         <td class="text-center"><%= race.created_at.strftime("%d/%m/%Y") %></td>
-        <td class="text-center"><%= race.pool_type.humanize.titlecase %></td>
-        <td class="text-center"><%= race.proof_type.nil? ? '' : race.proof_type.humanize.titlecase %></td>
-        <td class="text-center"><%= race.style.humanize.titlecase %></td>
-        <td class="text-center"><%= race.distance.split('_').reverse.join(' ').titlecase %></td>
+        <td></td>
+        <td class="text-center"><%= race.distance.split('_')[1] %> / <%= race.style.humanize.titlecase %></td>
         <td class="text-center"><%= Time.at(race.checkpoints.sum(:elapsed_time)).strftime("%M:%S.%L") %></td>
         <td class="text-center text-primary">
           <%= link_to races_show_path(race_id: race.id) do %>
