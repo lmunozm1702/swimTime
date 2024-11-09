@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Race < ApplicationRecord
   has_many :checkpoints
 
@@ -17,7 +18,7 @@ class Race < ApplicationRecord
          meters_4x100: 7,
          meters_4x200: 8,
          meters_3000: 9,
-         meters_5000: 10,
+         meters_5000: 10
        },
        _prefix: true
 end

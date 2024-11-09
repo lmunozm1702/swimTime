@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -77,6 +78,15 @@ end
 
 gem "hirb"
 gem "htmlbeautifier"
+
+gem "rubocop"
 gem "rubocop-performance"
 gem "rubocop-rails"
+
+gem "rubocop-minitest"
+
+gem "rubocop-packaging"
+
+gem "rubocop-md"
+
 gem "syntax_tree"

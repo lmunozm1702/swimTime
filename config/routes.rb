@@ -1,6 +1,7 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
-  #races routes
+  # races routes
   get "races/new", to: "races#new"
   post "races/create", to: "races#create"
   get "races/time_registration", to: "races#time_registration"

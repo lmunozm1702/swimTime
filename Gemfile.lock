@@ -205,6 +205,13 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.34.1)
       parser (>= 3.3.1.0)
+    rubocop-md (1.2.4)
+      rubocop (>= 1.45)
+    rubocop-minitest (0.36.0)
+      rubocop (>= 1.61, < 2.0)
+      rubocop-ast (>= 1.31.1, < 2.0)
+    rubocop-packaging (0.5.2)
+      rubocop (>= 1.33, < 2.0)
     rubocop-performance (1.22.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
@@ -271,6 +278,10 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.8)
+  rubocop
+  rubocop-md
+  rubocop-minitest
+  rubocop-packaging
   rubocop-performance
   rubocop-rails
   selenium-webdriver

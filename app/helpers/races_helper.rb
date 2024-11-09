@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module RacesHelper
   def timestamp_to_time(timestamp)
     seconds = (timestamp.to_i / 1000) % 60
@@ -9,10 +10,10 @@ module RacesHelper
   end
 
   def strokes_by_minute(checkpoint)
-    (Time.at(checkpoint.arm_end - checkpoint.arm_start).seconds_since_midnight.round(3) - 75_600).round(3)
+    (Time.zone.at(checkpoint.arm_end - checkpoint.arm_start).seconds_since_midnight.round(3) - 75_600).round(3)
   end
 
   def stroke_time(checkpoint)
-    Time.at(checkpoint.arm_end - checkpoint.arm_start).strftime("%M:%S.%L")
+    Time.zone.at(checkpoint.arm_end - checkpoint.arm_start).strftime("%M:%S.%L")
   end
 end
