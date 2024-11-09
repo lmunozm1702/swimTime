@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeStartFromTimeToDatatime < ActiveRecord::Migration[7.0]
   def change
     # change the start column type from time to datetime
