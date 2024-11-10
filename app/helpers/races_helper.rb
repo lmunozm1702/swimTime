@@ -16,4 +16,8 @@ module RacesHelper
   def stroke_time(checkpoint)
     Time.zone.at(checkpoint.arm_end - checkpoint.arm_start).strftime("%M:%S.%L")
   end
+
+  def button_tooltip(text)
+    { 'bs-toggle': "tooltip", 'bs-html': "true", 'bs-title': "#{text}" }
+  end
 end

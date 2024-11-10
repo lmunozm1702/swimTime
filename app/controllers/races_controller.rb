@@ -40,6 +40,10 @@ class RacesController < ApplicationController
     @race = Race.includes(:checkpoints).find(params[:race_id])
   end
 
+  def index
+    @races = Race.all.order(created_at: :desc)
+  end
+
   private
     def add_checkpoint(race, params)
       race.checkpoints.create(

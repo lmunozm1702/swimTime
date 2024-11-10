@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-between gap-2 align-items-center">
+  <div class="flex-fill">
+    <%= render partial: 'shared/view_title', locals: { view_title: 'Races List' } %>
+  </div>
+  <div>
+    <%= link_to races_new_path, class:"text-decoration-none text-primary fs-2", data: button_tooltip('New Race') do %>
+      <i class="bi bi-plus-square-fill"></i>
+    <% end %>
+  </div>
+</div>
+<table class="table table-striped">
+  <%= render partial: 'shared/table_header', locals: { column_titles: ['Date', 'Proof Type',  'Proof', 'Time', ''] } %>
+  <tbody>
+    <% @races.each do |race| %>
+      <tr>
+        <td class="text-center"><%= race.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+        <td class="text-center"><%= race.proof_type.nil? ? 'Unknown' : race.proof_type.humanize %></td>
+        <td class="text-center"><%= race.style.humanize.capitalize %> - <%= race.distance.split('_')[1] %> <%= race.distance.split('_')[0] %></td>
+        <td class="text-center"><%= Time.at(race.checkpoints.sum(:elapsed_time)).strftime("%M:%S.%L") %></td%>
+        <td>
+          <%= link_to races_show_path(race_id: race.id), class:"text-decoration-none text-primary", data: button_tooltip('Race Details') do %>
+            <i class="bi bi-three-dots"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
