@@ -57,7 +57,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: swimTime_test
+  database: swimtime_test
+  username: swimtime
+  password: <%= ENV["SWIMTIME_DATABASE_PASSWORD"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -81,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: swimTime_production
-  username: swimTime
+  database: swimtime_production
+  username: swimtime
   password: <%= ENV["SWIMTIME_DATABASE_PASSWORD"] %>
