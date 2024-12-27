@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_22_230930) do
 
   create_table "races", force: :cascade do |t|
     t.integer "pool_type"
+    t.integer "genre"
     t.integer "proof_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
