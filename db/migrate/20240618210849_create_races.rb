@@ -6,7 +6,6 @@ class CreateRaces < ActiveRecord::Migration[7.0]
       t.time :start
       t.time :end
       t.integer :pool_type
-      t.references :proofs, null: false, foreign_key: true
       t.integer :genre
       t.integer :proof_type
 

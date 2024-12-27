@@ -1,0 +1,27 @@
+<%= render partial: 'shared/view_title', locals: { view_title: 'Races List' } %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th class="text-center">Date</th>
+      <th class="text-center">Swimmer</th>
+      <th class="text-center">Event</th>
+      <th class="text-center">Elapsed Time</th>
+      <th class="text-center"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @races.each do |race| %>
+      <tr>
+        <td class="text-center"><%= race.created_at.strftime("%d/%m/%Y") %></td>
+        <td></td>
+        <td class="text-center"><%= race.distance.split('_')[1] %> / <%= race.style.humanize.titlecase %></td>
+        <td class="text-center"><%= Time.at(race.checkpoints.sum(:elapsed_time)).strftime("%M:%S.%L") %></td>
+        <td class="text-center text-primary">
+          <%= link_to races_show_path(race_id: race.id) do %>
+            <i class="bi bi-graph-up-arrow"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
